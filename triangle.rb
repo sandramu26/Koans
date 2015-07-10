@@ -15,6 +15,18 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  raise TriangleError if [a, b, c].min <= 0 
+  x, y, z = [a,b,c].sort
+  raise TriangleError if x + y <= z
+  [:equilateral,:isosceles,:scalene].fetch([a,b,c].uniq.size - 1)
+  
+  if (a==b && a==c && b==c)
+  	return :equilateral
+  elsif (a==b || a==c || c==b)
+  	return :isosceles
+  else
+  	return :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
